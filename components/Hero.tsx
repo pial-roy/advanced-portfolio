@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { Spotlight } from "@/components/ui/Spotlight";
 import { World } from "@/components/ui/globe";
+import { BackgroundBeams } from "@/components/ui/background-beams";
 
 const tagline = "Turning Visions into Real Time Application.";
 
@@ -14,7 +14,7 @@ const globeArcs = [
     endLat: 51.5074,
     endLng: -0.1278,
     arcAlt: 0.25,
-    color: "#ff6700", // orange-red
+    color: "#ff6700",
   },
   {
     order: 2,
@@ -23,7 +23,7 @@ const globeArcs = [
     endLat: 35.6895,
     endLng: 139.6917,
     arcAlt: 0.22,
-    color: "#ff6700", // orange-red
+    color: "#ff6700",
   },
   {
     order: 3,
@@ -32,7 +32,7 @@ const globeArcs = [
     endLat: 40.7128,
     endLng: -74.006,
     arcAlt: 0.18,
-    color: "#ff6700", // orange-red
+    color: "#ff6700",
   },
 ];
 
@@ -54,25 +54,21 @@ export default function Hero() {
 
   return (
     <section className="relative flex flex-col items-center justify-center min-h-[90vh] bg-gradient-to-br from-[#18181b] via-[#23272f] to-[#0f172a] text-white py-16 overflow-hidden">
-      {/* White Spotlight from top left */}
-      <Spotlight
-        className="top-[-20%] left-[-20%] w-[120vw] h-[80vh] opacity-40"
-        fill="#fff"
-      />
-      {/* Brighter, Larger Globe */}
-
-      <div className="absolute z-0 left-[72%] top-[120%] -translate-x-1/2 -translate-y-1/2 w-[1500px] h-[1500px] opacity-90 pointer-events-none">
+      {/* Animated Beams Background */}
+      <BackgroundBeams className="z-0" />
+      {/* Globe */}
+      <div className="absolute z-10 left-[72%] top-[120%] -translate-x-1/2 -translate-y-1/2 w-[1500px] h-[1500px] pointer-events-none">
         <World
           globeConfig={{
             pointSize: 3,
-            globeColor: "rgba(101,78,55,0.8)", // darker grey surface
+            globeColor: "rgba(40,40,48,0.55)",
             showAtmosphere: true,
-            atmosphereColor: "rgba(71,85,105,0.18)", // subtle grey
+            atmosphereColor: "rgba(71,85,105,0.12)",
             atmosphereAltitude: 0.22,
-            emissive: "#23272f", // dark grey emissive
+            emissive: "#23272f",
             emissiveIntensity: 0.18,
             shininess: 1.2,
-            polygonColor: "rgba(255,103,0,0.7)", // bright orange land
+            polygonColor: "rgba(255,103,0,0.5)",
             ambientLight: "#fff",
             directionalLeftLight: "#fff",
             directionalTopLight: "#fff",
@@ -84,7 +80,7 @@ export default function Hero() {
         />
       </div>
       {/* Tagline */}
-      <div className="relative z-10 mt-12 text-center">
+      <div className="relative z-20 mt-12 text-center">
         <p className="mb-8 text-slate-100 min-h-[2.5rem] text-3xl md:text-4xl font-bold tracking-tight drop-shadow-lg">
           <span
             ref={textRef}
